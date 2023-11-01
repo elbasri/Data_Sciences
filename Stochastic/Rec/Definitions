@@ -1,0 +1,6 @@
+Un processus stochastique est un modèle mathématique qui décrit l'évolution aléatoire d'une variable au fil du temps en utilisant des variables aléatoires.
+1-Marche aléatoire (ou random walk): X(t) = X(t-1) + ε(t) 
+(ε(t) = la variable aléatoire associée à l'étape t)
+exemple: Stockastic->Python->RandomWalk.py
+2-Chaines de Markov "irreductible" et "ergodique" alors la probabilité limite: lim n→∞ ​P(Xn​=i)=π(i)
+exemple: Stockastic->Python->RandomWalk.py
