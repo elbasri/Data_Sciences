@@ -1,0 +1,160 @@
+[
+    {
+        "id": "ebb725fd7e3e4dc8",
+        "type": "tab",
+        "label": "Flux 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "4847e7ee971d11ef",
+        "type": "serial in",
+        "z": "ebb725fd7e3e4dc8",
+        "name": "Arduino uno",
+        "serial": "cc877705aac37110",
+        "x": 210,
+        "y": 700,
+        "wires": [
+            [
+                "a7cd12e4d29f4258",
+                "3db5f7afa7665550"
+            ]
+        ]
+    },
+    {
+        "id": "3db5f7afa7665550",
+        "type": "function",
+        "z": "ebb725fd7e3e4dc8",
+        "name": "Dht Transform",
+        "func": "var m = msg.payload.split(',');\nvar H = { payload: parseFloat(m[0]) };\nvar T = { payload: parseFloat(m[1]) };\n\nreturn [H, T];\n",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 680,
+        "wires": [
+            [
+                "c8f99ae31fa439f6"
+            ],
+            [
+                "30f81a5583f2f481"
+            ]
+        ]
+    },
+    {
+        "id": "c8f99ae31fa439f6",
+        "type": "ui_gauge",
+        "z": "ebb725fd7e3e4dc8",
+        "name": "",
+        "group": "9d64335736b26211",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humidity",
+        "label": "",
+        "format": "{{value}} %",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 680,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "30f81a5583f2f481",
+        "type": "ui_gauge",
+        "z": "ebb725fd7e3e4dc8",
+        "name": "",
+        "group": "9d64335736b26211",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "",
+        "format": "{{value}} °C",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 690,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "a7cd12e4d29f4258",
+        "type": "debug",
+        "z": "ebb725fd7e3e4dc8",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 420,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "cc877705aac37110",
+        "type": "serial-port",
+        "serialport": "COM6",
+        "serialbaud": "9600",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "9d64335736b26211",
+        "type": "ui_group",
+        "name": "Humidity/Temperature",
+        "tab": "e7f8edd3ad3ef6bb",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "e7f8edd3ad3ef6bb",
+        "type": "ui_tab",
+        "name": "Tab 1",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
