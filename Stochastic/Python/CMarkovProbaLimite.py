@@ -8,6 +8,7 @@ row_sums = A.sum(axis=1)
 A /= row_sums[:, np.newaxis]
 
 # Second membre du systeme d'equations
+#Modif..
 b = np.array([1, 1, 1, 1])
 
 
