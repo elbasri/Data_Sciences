@@ -3,6 +3,15 @@
    
    https://wokwi.com/arduino/projects/322410731508073042
 */
+
+
+/*
+in Wokwi libraries, add:
+TinyWireM
+Tiny4kOLED
+ThingSpeak
+
+*/
 #include <WiFi.h>
 #include "DHTesp.h"
 #include "ThingSpeak.h"
