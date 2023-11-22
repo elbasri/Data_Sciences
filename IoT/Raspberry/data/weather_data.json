@@ -1,0 +1,44 @@
+{
+  "coord": {
+    "lon": -7.6192,
+    "lat": 33.5928
+  },
+  "weather": [
+    {
+      "id": 802,
+      "main": "Clouds",
+      "description": "scattered clouds",
+      "icon": "03d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 292.28,
+    "feels_like": 292.02,
+    "temp_min": 292.22,
+    "temp_max": 293.16,
+    "pressure": 1021,
+    "humidity": 68,
+    "temp_celsius": 19.13
+  },
+  "visibility": 6000,
+  "wind": {
+    "speed": 2.06,
+    "deg": 300
+  },
+  "clouds": {
+    "all": 40
+  },
+  "dt": 1700648781,
+  "sys": {
+    "type": 2,
+    "id": 47681,
+    "country": "MA",
+    "sunrise": 1700636909,
+    "sunset": 1700673893
+  },
+  "timezone": 3600,
+  "id": 2553604,
+  "name": "Casablanca",
+  "cod": 200
+}
