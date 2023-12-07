@@ -30,6 +30,13 @@ if response.status_code == 200:
     print(f'Temperature: {meteoINS.get_temperature_celsius():.2f} °C')
     print(f'Humidity: {meteoINS.humidity}%')
     print(f'Wind Speed: {meteoINS.wind_speed} m/s')
+    #curl -v -X POST http://thingsboard.cloud/api/v1/CPDhAlULqoenxQoLCHkD/telemetry --header Content-Type:application/json --data "{temperature:25}"
+
+    url = "http://thingsboard.cloud/api/v1/CPDhAlULqoenxQoLCHkD/telemetry"
+    headers = {"Content-Type": "application/json"}
+    data = f'{{"temperature": {meteoINS.get_temperature_celsius()}}}'
+
+    response = requests.post(url, headers=headers, data=data)
 else:
     print(f'Error {response.status_code}: Unable to fetch weather data')
     print(response.text)

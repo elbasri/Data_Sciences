@@ -5,40 +5,40 @@
   },
   "weather": [
     {
-      "id": 802,
+      "id": 804,
       "main": "Clouds",
-      "description": "scattered clouds",
-      "icon": "03d"
+      "description": "overcast clouds",
+      "icon": "04d"
     }
   ],
   "base": "stations",
   "main": {
-    "temp": 292.28,
-    "feels_like": 292.02,
-    "temp_min": 292.22,
-    "temp_max": 293.16,
-    "pressure": 1021,
-    "humidity": 68,
-    "temp_celsius": 19.13
+    "temp": 294.33,
+    "feels_like": 293.86,
+    "temp_min": 293.89,
+    "temp_max": 297.27,
+    "pressure": 1012,
+    "humidity": 52,
+    "temp_celsius": 21.18
   },
-  "visibility": 6000,
+  "visibility": 8000,
   "wind": {
-    "speed": 2.06,
-    "deg": 300
+    "speed": 3.09,
+    "deg": 260
   },
   "clouds": {
-    "all": 40
+    "all": 98
   },
-  "dt": 1700648781,
+  "dt": 1701343242,
   "sys": {
     "type": 2,
     "id": 47681,
     "country": "MA",
-    "sunrise": 1700636909,
-    "sunset": 1700673893
+    "sunrise": 1701328544,
+    "sunset": 1701364960
   },
   "timezone": 3600,
   "id": 2553604,
   "name": "Casablanca",
   "cod": 200
-} 
+}
