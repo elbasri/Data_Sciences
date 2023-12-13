@@ -2,6 +2,8 @@ import requests
 import json
 import os
 from meteo import *
+from random import uniform
+import time
 
 # Replace 'your_api_key' with your actual OpenWeatherMap API key
 ville = "casablanca"
@@ -23,20 +25,33 @@ if response.status_code == 200:
     #weather_data['main']['temp_celsius'] = round(celsius_temperature, 2)
 
     # Create a Weather instance
-    meteoINS = meteo(weather_data['main']['temp'], weather_data['main']['humidity'], weather_data['wind']['speed'], ville)
+    ##meteoINS = meteo(weather_data['main']['temp'], weather_data['main']['humidity'], weather_data['wind']['speed'], ville)
 
     # Accessing weather information
-    print(f'Your city: {meteoINS.ville}%')
-    print(f'Temperature: {meteoINS.get_temperature_celsius():.2f} °C')
-    print(f'Humidity: {meteoINS.humidity}%')
-    print(f'Wind Speed: {meteoINS.wind_speed} m/s')
+    ##print(f'Your city: {meteoINS.ville}%')
+    ##print(f'Temperature: {meteoINS.get_temperature_celsius():.2f} °C')
+    ##print(f'Humidity: {meteoINS.humidity}%')
+    ##print(f'Wind Speed: {meteoINS.wind_speed} m/s')
     #curl -v -X POST http://thingsboard.cloud/api/v1/CPDhAlULqoenxQoLCHkD/telemetry --header Content-Type:application/json --data "{temperature:25}"
+    #curl -v -X POST http://thingsboard.cloud/api/v1/q8ilo33p0nsz7z3v69x4/telemetry --header Content-Type:application/json --data "{temperature:25}"
 
-    url = "http://thingsboard.cloud/api/v1/CPDhAlULqoenxQoLCHkD/telemetry"
-    headers = {"Content-Type": "application/json"}
-    data = f'{{"temperature": {meteoINS.get_temperature_celsius()}}}'
+    meteo_instance = meteo(weather_data)
+    # Convert the instance data to a flat dictionary
+    fweather_data = meteo_instance.to_flat_dict()
+    while True:
+        print(fweather_data)
+        for key in fweather_data:
+            if isinstance(fweather_data[key], (int, float)):
+                change_factor = uniform(-1.2, 1.1)
+                fweather_data[key] *= change_factor
 
-    response = requests.post(url, headers=headers, data=data)
+        url = "http://thingsboard.cloud/api/v1/q8ilo33p0nsz7z3v69x4/telemetry"
+        headers = {"Content-Type": "application/json"}
+        data = json.dumps(fweather_data)
+
+        response = requests.post(url, headers=headers, data=data)
+        print(response)
+        time.sleep(5)
 else:
     print(f'Error {response.status_code}: Unable to fetch weather data')
     print(response.text)
