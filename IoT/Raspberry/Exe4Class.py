@@ -39,12 +39,21 @@ if response.status_code == 200:
     # Convert the instance data to a flat dictionary
     fweather_data = meteo_instance.to_flat_dict()
     while True:
-        print(fweather_data)
-        for key in fweather_data:
-            if isinstance(fweather_data[key], (int, float)):
-                change_factor = uniform(-1.2, 1.1)
-                fweather_data[key] *= change_factor
+        # List of keys to apply changes to
+        keys_to_change = [
+            'temperature_celsius', 'temperature_kelvin', 'temp_max_kelvin', 'humidity',
+            'temp_min_kelvin', 'wind_speed', 'wind_deg'
+        ]
 
+        # Applying random changes to the specified keys
+        for key in keys_to_change:
+            if key in fweather_data:
+                change_factor = uniform(-1, 2)
+                if(fweather_data[key] < 1) :
+                    change_factor = uniform(1, 2)
+                fweather_data[key] += change_factor
+        print("Changed")
+        print(fweather_data)
         url = "http://thingsboard.cloud/api/v1/q8ilo33p0nsz7z3v69x4/telemetry"
         headers = {"Content-Type": "application/json"}
         data = json.dumps(fweather_data)

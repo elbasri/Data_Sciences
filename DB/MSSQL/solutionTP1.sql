@@ -33,27 +33,12 @@ BEGIN
     GROUP BY v.villedepart
     HAVING COUNT(*) > 1;
 
-    -- Query 10
-    SELECT a.ville, COUNT(*) AS NombreAvions, MIN(a.Capacite) AS CapaciteMin, MAX(a.Capacite) AS CapaciteMax
-    FROM avion a
-    GROUP BY a.ville;
-
-    -- Query 11
-    SELECT a.ville, COUNT(*) AS NombreAvions, MIN(a.Capacite) AS CapaciteMin, MAX(a.Capacite) AS CapaciteMax
-    FROM avion a
-    WHERE a.Capacite > 300
-    GROUP BY a.ville;
-
-    -- Query 12
-    SELECT a.ville, AVG(a.Capacite) AS CapaciteMoyenne
-    FROM avion a
-    GROUP BY a.ville
-    HAVING COUNT(*) > 1;
 
     -- Query 13
     SELECT p.nom
     FROM pilote p
     WHERE p.nom LIKE 'S%';
+END;
 END
 GO
 
