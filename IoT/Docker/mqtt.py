@@ -5,7 +5,7 @@ import paho.mqtt.client as mqtt
 import json
 
 # Measurement name
-measurement = "sensorData"
+measurement = "sensorDataProd"
 
 # MQTT Configuration
 mqtt_broker = "localhost"
