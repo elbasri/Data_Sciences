@@ -50,7 +50,7 @@ if response.status_code == 200:
             if key in fweather_data:
                 change_factor = uniform(-1, 2)
                 if(fweather_data[key] < 1) :
-                    change_factor = uniform(1, 2)
+                    change_factor = uniform(1, 1)
                 fweather_data[key] += change_factor
         print("Changed")
         print(fweather_data)
