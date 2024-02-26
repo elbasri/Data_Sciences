@@ -5,7 +5,7 @@ import json
 import math
 
 measurement = "sensorDataRaspPi"
-mqtt_broker = "localhost"
+mqtt_broker = "172.16.2.54"
 mqtt_port = 1883
 mqtt_topic = "/sensor/dht"
 longitude = -0.1257
