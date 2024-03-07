@@ -51,3 +51,41 @@ plt.title("Distribution of classes")
 plt.ylabel("N of instances")
 plt.xticks(range(len(classes)) ,classes)
 #plt.show()
+
+X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=0)
+
+#classifier model
+knn = KNeighborsClassifier(n_neighbors=5)
+knn.fit(X_train, y_train)
+
+#evaluation: training data
+y_train_pedicted = knn.predict(X_train)
+train_accuracy_knn = np.mean(y_train_pedicted == y_train)
+print("\nTraining Accuracy: \n", train_accuracy_knn)
+
+#evaluation: test data
+#model accuracy
+test_accuracy_knn = knn.score(X_test, y_test)
+print("\nTest accuracy: \n", test_accuracy_knn)
+y_test_predicted = knn.predict(X_test)
+print("No of correct prediction {Test}: %d/%d"%(np.sum(y_test_predicted == y_test), len(y_test)))
+
+cm = confusion_matrix(y_test, y_test_predicted)
+print("\nConfusion Matrix (Test Data):\n", cm)
+
+precision = precision_score(y_test, y_test_predicted)
+print("\nTest: Precesion = %f\n"%precision)
+
+recall = recall_score(y_test, y_test_predicted)
+f1 = f1_score(y_test, y_test_predicted)
+print("Test: F1 Score = %f"%f1)
+
+
+
+y_virginica_test = (y_test == 1).sum()
+y_not_virginica = (y_test == 0).sum()
+print(y_virginica_test, y_not_virginica)
+
+cmd = ConfusionMatrixDisplay(cm, display_labels=classes)
+cmd.plot()
+plt.show()
