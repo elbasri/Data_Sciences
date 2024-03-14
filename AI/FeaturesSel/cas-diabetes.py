@@ -28,6 +28,9 @@ X_test_scaled = scaler.transform(X_test)
 #3- Sélection des Caractéristiques
 
 # Utilisation de SelectKBest pour sélectionner les k meilleures caractéristiques
+#selector = SelectKBest(score_func=chi2, k=4)
+#X_train_selected = selector.fit_transform(X_train_scaled, y_train)
+#X_test_selected = selector.transform(X_test_scaled)
 selector = SelectFromModel(RandomForestClassifier(n_estimators=100, random_state=42), threshold='median')
 X_train_selected = selector.fit_transform(X_train_scaled, y_train)
 X_test_selected = selector.transform(X_test_scaled)
