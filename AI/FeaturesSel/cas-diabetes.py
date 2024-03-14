@@ -43,4 +43,4 @@ y_pred = clf.predict(X_test_selected)
 
 # Évaluation du modèle
 accuracy = accuracy_score(y_test, y_pred)
-print(f'Accuracy: {accuracy:.2f}')
+print(f'Précision: {accuracy:.2f}')
