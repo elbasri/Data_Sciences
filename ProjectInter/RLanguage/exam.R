@@ -35,8 +35,25 @@ hist(diamonds_data$price[diamonds_data$price < 2500], main = "Répartition des p
 # Ou avec ggplot2
 library(ggplot2)
 ggplot(diamonds_data[diamonds_data$price < 2500, ], aes(x = price)) +
-  geom_histogram(binwidth = 100, fill = "blue", color = "black") +
+  geom_histogram(binwidth = 100, fill = "skyblue", color = "black") +
   theme_minimal() +
   labs(title = "Répartition des prix < 2500", x = "Prix", y = "Fréquence")
 
+#8
+ggplot(data = diamonds_data, aes(x = price, y = carat)) +
+  geom_point(alpha = 0.1) +  # Ajout de transparence
+  geom_smooth(method = "lm", color = "blue") +  # Ajout d'une ligne de tendance linéaire
+  labs(title = "Prix vs Carat des diamants", x = "Prix ($)", y = "Carat") +
+  theme_minimal()  # Utiliser un thème minimal
 
+#9
+ggplot(data = diamonds_data, aes(x = cut, fill = color)) + geom_bar(position = "stack")
+
+ggplot(data = diamonds_data, aes(x = cut, fill = color)) +
+  geom_bar(position = "stack") +
+  geom_text(aes(label = ..count..), stat = 'count', position = position_stack(vjust = 0.5), color = "white")
+
+
+#10
+cor_matrix <- cor(diamonds_data[sapply(diamonds_data, is.numeric)])
+cor_matrix
